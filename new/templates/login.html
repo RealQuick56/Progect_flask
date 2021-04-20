@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Логин</title>
+{% endblock %}
+
+{% block body %}
+
+<main class="form-signing">
+  <form method="POST">
+    <h1 class="h3 mb-3">Вход в систему</h1>
+
+
+
+    <div class="d-flex justify-content-center py-3">
+    <div class="form-floating py-3 m-1">
+      <input type="email" class="form-control w-auto" id="floatingInput" placeholder="name@example.com">
+      <label class="py-4" for="floatingInput">Введите почту</label>
+    </div>
+    <div class="form-floating py-3 m-1">
+      <input type="password" class="form-control w-auto" id="floatingPassword" placeholder="Password">
+      <label class="py-4" for="floatingPassword">Введите пароль</label>
+    </div>
+    </div>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Запомнить меня
+      </label>
+    </div>
+    <button class="w-auto btn btn-lg btn-primary" type="submit" value="Login"><a href="/">Войти</a></button>
+    <button class="w-auto btn btn-lg btn-primary" type="submit" value="Login"><a href="/registration">Зарегистрироваться</a></button>
+  </form>
+</main>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}
