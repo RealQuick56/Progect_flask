@@ -9,16 +9,26 @@
   <form method="POST">
     <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
 
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
     <div class="form-floating m-2 py-2">
-      <input type="email" class="form-control w-auto" id="floatingInput" placeholder="name@example.com">
+      <input type="email" class="form-control w-auto" id="floatingInput" name="login" placeholder="name@example.com">
       <label for="floatingInput">Введите почту</label>
     </div>
     <div class="form-floating m-2 py-2">
-      <input type="password" class="form-control w-auto" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control w-auto" id="floatingPassword" name="password" placeholder="Password">
       <label for="floatingPassword">Введите пароль</label>
     </div>
     <div class="form-floating m-2 py-2">
-      <input type="password" class="form-control w-auto" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control w-auto" id="floatingPassword" name="repassword" placeholder="Password">
       <label for="floatingPassword">Повторите пароль</label>
     </div>
 
@@ -27,7 +37,7 @@
         <input type="checkbox" value="remember-me"> Запомнить меня
       </label>
     </div>
-    <button class="w-auto btn btn-lg btn-primary py-2" type="submit" value="Registration"><a href="/">Зарегестрироваться</a></button>
+    <button class="w-auto btn btn-lg btn-primary py-2" type="submit" value="Registration">Зарегестрироваться</button>
   </form>
 </main>
 
