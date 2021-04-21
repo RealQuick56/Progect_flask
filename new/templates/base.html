@@ -1,32 +1,102 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    {% block title %}{% endblock %}
-</head>
-<div class="container">
-  <header class="d-flex justify-content-center py-3">
-    <ul class="nav nav-pills">
-      <li class="nav-item"><a href="/home" class="nav-link active">PYPROJECTGAMES</a></li>
-      {% if user == session['login'] %}
-      <li class="nav-item"><a href="/create" class="nav-link">Добавить товар</a></li>
-      <li class="nav-item"><a href="/about" class="nav-link">Про нас</a></li>
-      <li class="nav-item"><a class="nav-link" href="/profile">{{ user }}</a></li>
-      {% else %}
-      <li class="nav-item"><a href="/login" class="nav-link">Вход</a></li>
-      <li class="nav-item"><a href="/registration" class="nav-link">Регистрация</a></li>
-      {% endif %}
-    </ul>
-  </header>
-</div>
+<html lang="ru" prefix="og: http://ogp.me/ns#"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow"><link rel="canonical" href="https://bootstrap5.ru/examples/navbar-static">
+<meta name="description" content="Пример одной статической верхней панели навигации с дополнительным контентом.">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors, Alexey Golyagin">
+<meta name="docsearch:language" content="ru">
+<meta name="docsearch:version" content="5.0">
+{% block title %}{% endblock %}
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+<link rel="stylesheet" href="https://bootstrap5.ru/css/docs.css">
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="https://bootstrap5.ru/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="https://bootstrap5.ru/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="https://bootstrap5.ru/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="https://bootstrap5.ru/img/favicons/manifest.json">
+<link rel="mask-icon" href="https://bootstrap5.ru/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="https://bootstrap5.ru/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+<!-- Facebook -->
+<meta property="og:url" content="https://bootstrap5.ru/examples/navbar-static">
+<meta property="og:title" content="Статическая верхняя панель навигации">
+<meta property="og:description" content="Пример одной статической верхней панели навигации с дополнительным контентом.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://bootstrap5.ru/img/examples/navbar-static.png">
+<meta property="og:image:type" content="image/jpg">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
+    <style>
+      body {
+        background-color: #f2f1f0;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="static/css/navbar-top.css" rel="stylesheet"></head>
 <body class="text-center">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home">PYPROJECTGAMES</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto mb-2 mb-md-0">
+        {% if user == session['login'] %}
+        <li class="nav-item active">
+          <a class="nav-link" aria-current="page" href="/about">О нас</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/create">Добавить товар</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" aria-current="page" href="/about">О нас</a>
+        </li>
+        {% endif %}
+      </ul>
+      <form class="d-flex justify-content-center">
+        {% if user == session['login'] %}
+        <a class="nav-link" aria-current="page" href="/profile">{{ user }}</a>
+        {% else %}
+        <a class="nav-link" aria-current="page" href="/login">Вход</a>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</nav>
 
 {% block body %}{% endblock %}
 
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-179173139-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-179173139-1');
+</script>
+<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments) }; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(67718821, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/67718821" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
 <div>
   <footer class="pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">
