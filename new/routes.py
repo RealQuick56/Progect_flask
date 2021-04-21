@@ -39,7 +39,7 @@ def create():
         try:
             db.session.add(item)
             db.session.commit()
-            return redirect('/')
+            return redirect('/home')
         except:
             return "Получилась ошибка"
     else:
