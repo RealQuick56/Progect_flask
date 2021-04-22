@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Загрузка</title>
+{% endblock %}
+
+{% block body %}
+<div class="container py-3">
+  <h1>Загрузите файл</h1>
+  <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+    <input class="w-auto py-2" type=file name=photo>
+    <button class="w-auto btn btn-lg btn-primary py-2" type="submit">Отправить</button>
+</form>
+</div>
+{% endblock %}

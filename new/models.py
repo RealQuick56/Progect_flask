@@ -9,6 +9,7 @@ class Item(db.Model):
     price = db.Column(db.Integer, nullable=False)
     isActive = db.Column(db.Boolean, default=True)
     text = db.Column(db.String(250), nullable=False)
+    nick = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return self.title

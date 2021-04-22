@@ -2,7 +2,7 @@ from flask import render_template, session, flash, request, redirect, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_user, login_required, logout_user
 
-from new import db, app
+from new import db, app, photos
 from new.models import Item, User
 
 
@@ -32,7 +32,7 @@ def create():
         title = request.form['title']
         price = request.form['price']
         text = request.form['text']
-        item = Item(title=title, price=price, text=text)
+        item = Item(title=title, price=price, text=text, nick=nick)
 
         try:
             db.session.add(item)
@@ -82,7 +82,7 @@ def register():
         text_about = request.form['about_me']
         password = request.form['password']
         repassword = request.form['repassword']
-        photo = request.form['photo']
+        photo = ''
 
         try:
             hash_pwd = generate_password_hash(password)
@@ -126,11 +126,26 @@ def buy(title):
         return render_template('register.html', user='')
 
 
-
-
 @app.after_request
 def redirect_to_singing(response):
     if response.status_code == 401:
         return redirect(url_for('logins') + '?next=' + request.url)
     else:
         return response
+
+
+@app.route('/upload', methods=['GET', 'POST'])
+@login_required
+def upload():
+    if request.method == 'POST' and 'photo' in request.files:
+        users = User.query.order_by(User.id).all()
+        for i in users:
+            if i.login in session['login']:
+                filename = photos.save(request.files['photo'])
+                i.photo = filename
+                db.session.commit()
+        return redirect('/profile')
+    try:
+        return render_template('upload_photos.html', user=session['login'])
+    except:
+        return render_template('upload_photos.html', user='')
