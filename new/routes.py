@@ -32,6 +32,7 @@ def create():
         title = request.form['title']
         price = request.form['price']
         text = request.form['text']
+        nick = request.form['nick']
         item = Item(title=title, price=price, text=text, nick=nick)
 
         try:
