@@ -5,6 +5,27 @@
 {% endblock %}
 
 {% block body %}
-<h1>{{ user }}</h1>
-<br>
+
+<div class="card bg-dark text-white">
+  {% for i in users %}
+  {% if i['login'] in user %}
+  <img src="{{ url_for('static', filename='img/back.jpg' ) }}" class="card-img" alt="Здесь должна быть фоновая картинка...">
+  <div class="card-img-overlay" style="max-width: 540px;">
+  <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 ">
+    <div class="col-md-4">
+      <img src="{{ url_for('static', filename='img/' + i.photo ) }}" width="137" height="211" alt="Здесь должно быть ваше красивое личико...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2 class="card-title py-3">{{ i.nick }}</h2>
+    <p class="card-text">Почта: {{ i.login }}</p>
+    <p class="card-text">Описание: {{ i.text_about }}</p>
+    <p class="card-text">Ссылка на картинку: {{ i.photo }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endif %}
+  {% endfor %}
+</div>
 {% endblock %}

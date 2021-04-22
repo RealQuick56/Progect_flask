@@ -8,7 +8,7 @@ from new.models import Item, User
 
 @app.route('/home')
 def index():
-    items = Item.query.order_by(Item.price).all()
+    items = Item.query.order_by(Item.id).all()
     try:
         return render_template('index.html', data=items, user=session['login'])
     except:
@@ -78,12 +78,15 @@ def register():
         __tablename__ = 'user'
 
         login = request.form['login']
+        nick = request.form['nick']
+        text_about = request.form['about_me']
         password = request.form['password']
         repassword = request.form['repassword']
+        photo = request.form['photo']
 
         try:
             hash_pwd = generate_password_hash(password)
-            new_user = User(login=login, password=hash_pwd)
+            new_user = User(login=login, password=hash_pwd, nick=nick, text_about=text_about, photo=photo)
             db.session.add(new_user)
             db.session.commit()
 
@@ -109,12 +112,20 @@ def logout():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', user=session['login'])
+    users = User.query.order_by(User.id).all()
+    return render_template('profile.html', user=session['login'], users=users)
 
-@app.route('/buy')
+
+@app.route('/buy/<path:title>')
 @login_required
-def buy():
-    return render_template('buy.html')
+def buy(title):
+    items = Item.query.order_by(Item.id).all()
+    try:
+        return render_template('buy.html', title=title, data=items, user=session['login'])
+    except:
+        return render_template('register.html', user='')
+
+
 
 
 @app.after_request

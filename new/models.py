@@ -17,7 +17,10 @@ class Item(db.Model):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(128), nullable=False, unique=True)
+    nick = db.Column(db.String(128), nullable=False, unique=True)
     password = db.Column(db.String(8), nullable=False)
+    text_about = db.Column(db.String, nullable=False)
+    photo = db.Column(db.String, nullable=False)
 
 
 @manager.user_loader

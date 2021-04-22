@@ -6,7 +6,7 @@
 
 {% block body %}
 
-<main class="form-signing">
+<div class="container d-flex justify-content-center py-3">
   <form method="POST">
     <h1 class="h3 mb-3">Вход в систему</h1>
 
@@ -21,18 +21,15 @@
 {% endwith %}
 
 
-    <div class="d-flex justify-content-center py-3">
-    <div class="form-floating py-3 m-1">
+
+    <div class="form-floating py-2 m-1">
       <input type="email" class="form-control w-auto" id="floatingInput" name="login" placeholder="name@example.com">
-      <label class="py-4" for="floatingInput">Введите почту</label>
     </div>
-    <div class="form-floating py-3 m-1">
+    <div class="form-floating py-2 m-1">
       <input type="password" class="form-control w-auto" id="floatingPassword" name="password" placeholder="Password">
-      <label class="py-4" for="floatingPassword">Введите пароль</label>
     </div>
-    </div>
-    <button class="w-auto btn btn-lg btn-primary" type="submit" value="Login">Войти</button>
-    <button class="w-auto btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
+    <button class="w-auto btn btn-lg btn-primary py-2" type="submit" value="Login">Войти</button>
+      <button class="w-auto btn btn-lg btn-primary py-2" type="submit"><a href="/registration">Зарегистрироваться</a></button>
   </form>
-</main>
+</div>
 {% endblock %}
