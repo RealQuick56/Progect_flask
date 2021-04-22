@@ -7,11 +7,21 @@
 {% block body %}
 <div class="container">
   <h1>Добавление товара</h1>
-  <form method="post">
-    <input type="text" class="form-control" name="title" id="title" placeholder="Введите название"><br><br>
-    <input type="number" class="form-control" name="price" id="price" placeholder="Введите цену"><br><br>
-    <input type="text" class="form-control" name="text" id="text" placeholder="Введите описание"><br><br>
-    <button class="btn btn-success" type="submit">Добавить товар</button>
+  <div class="container d-flex justify-content-center">
+  <form method="POST">
+
+
+    <div class="form-floating py-3 m-1">
+      <input type="text" class="form-control w-auto"  name="title" placeholder="Например: Ручка">
+    </div>
+    <div class="form-floating py-3 m-1">
+      <input type="number" class="form-control w-auto"  name="price" placeholder="Например: 10">
+    </div>
+    <div class="form-floating py-3 m-1">
+      <input type="text" class="form-control w-auto"  name="text" placeholder="Например: Очень красивая">
+    </div>
+    <button class="w-auto btn btn-lg btn-primary py-2 m-3" type="submit" value="Registration">Добавить товар</button>
   </form>
 </div>
+  </div>
 {% endblock %}

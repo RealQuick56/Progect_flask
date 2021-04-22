@@ -15,14 +15,12 @@ def index():
         return render_template('index.html', data=items, user='')
 
 
-
 @app.route('/about')
 def about():
     try:
         return render_template('about.html', text='Чтобы не было тут пусто...', user=session['login'])
     except:
         return render_template('about.html', text='Чтобы не было тут пусто...', user='')
-
 
 
 @app.route('/create', methods=['POST', 'GET'])
@@ -112,6 +110,11 @@ def logout():
 @login_required
 def profile():
     return render_template('profile.html', user=session['login'])
+
+@app.route('/buy')
+@login_required
+def buy():
+    return render_template('buy.html')
 
 
 @app.after_request
