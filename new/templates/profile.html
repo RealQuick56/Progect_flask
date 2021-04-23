@@ -6,12 +6,12 @@
 
 {% block body %}
 
-<div class="card text-white">
+<div class="card text-black">
   {% for i in users %}
   {% if i['login'] in user %}
-  <img src="{{ url_for('static', filename='img/back.jpg' ) }}" class="card-img" alt="Здесь должна быть фоновая картинка...">
+  <img src="{{ url_for('static', filename='img/back.jpg' ) }}" height="1080" class="card-img" alt="Здесь должна быть фоновая картинка...">
   <div class="card-img-overlay">
-  <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 ">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 ">
     <div class="col-md-4">
       <img src="{{ url_for('static', filename='img/' + i.photo ) }}" width="137" height="211" alt="Здесь должно быть ваше красивое личико...">
     </div>
@@ -19,7 +19,7 @@
       <div class="card-body">
         <h2 class="card-title py-3">{{ i.nick }}</h2>
     <p class="card-text">Почта: {{ i.login }}</p>
-    <p class="card-text">Описание: {{ i.text_about }}</p
+    <p class="card-text">Описание: {{ i.text_about }}</p>
       </div>
 
   </div>

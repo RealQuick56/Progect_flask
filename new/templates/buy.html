@@ -20,11 +20,12 @@
           <span class="badge bg-primary rounded-pill">1</span>
         </h4>
         <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-left lh-sm">
-            <div>
-              <h6 class="my-0">{{ i.title }}</h6>
-              <p class="clip text-muted">{{ i.text }}</p>
-              <span class="text-muted">{{ i.price }} рублей</span>
+          <li class="list-group-item  lh-sm">
+            <div class="d-flex justify-content-left">
+              <h6 class="my-0">Название: {{ i.title }}</h6>
+              <p class="clip text-muted">Описание: {{ i.text }}</p>
+              <p class="clip text-muted">Продавец: {{ i.nick }}</p>
+              <span class="text-muted">Цена: {{ i.price }} рублей</span>
             </div>
           </li>
         </ul>
